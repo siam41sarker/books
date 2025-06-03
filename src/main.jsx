@@ -5,6 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './Component/Root/Root'
 import ErrorElement from './Component/ErrorElement/ErrorElement'
 import Banner from './Component/Banner/Banner'
+import BookDetails from './Component/BookDetails/BookDetails'
+import ListedBooks from './Component/ListedBooks/ListedBooks'
+import PagesToRead from './Component/PagesToRead/PagesToRead'
 const siamRouter = createBrowserRouter(
   [
       {
@@ -15,6 +18,31 @@ const siamRouter = createBrowserRouter(
             {
                 path:'/',
                 element:<Banner></Banner>
+            },
+            {
+                path:'/:url',
+                element:<BookDetails></BookDetails>,
+                loader: async ()=>
+                    {
+                        try
+                          {
+                              const res = await fetch("AllBooks.json");
+                              const data = await res.json();
+                              return data;
+                          }
+                        catch(e)
+                          {
+                            return console.log(e);
+                          }
+                    }
+            },
+            {
+                path:'/listed-books',
+                element:<ListedBooks></ListedBooks>
+            },
+            {
+                path:'/pages-to-read',
+                element:<PagesToRead></PagesToRead>
             }
           ]
       }

@@ -1,4 +1,7 @@
+import { NavLink, useLocation } from "react-router-dom";
 const Header = () => {
+  const location = useLocation();
+  console.log(location.pathname)
   return (
     <div className="navbar bg-base-100 shadow-sm max-w-7xl mx-auto">
       <div className="navbar-start">
@@ -25,28 +28,28 @@ const Header = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a className="px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg">Home</a>
+              <NavLink to="/" className={location.pathname === '/'?"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg border border-solid border-[rgb(35,190,10)] rounded-lg text-[rgb(35,190,10)] font-semibold":"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg"}>Home</NavLink>
             </li>
             <li>
-              <a className="px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg">Listed Books</a>
+              <NavLink to="/listed-books" className={location.pathname === '/listed-books'?"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg border border-solid border-[rgb(35,190,10)] rounded-lg text-[rgb(35,190,10)] font-semibold":"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg"}>Listed Books</NavLink>
               </li>
             <li>
-              <a className="px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg">Pages to Read</a>
+              <NavLink to={"/pages-to-read"}className={location.pathname === '/pages-to-read'?"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg border border-solid border-[rgb(35,190,10)] rounded-lg text-[rgb(35,190,10)] font-semibold":"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg"}>Pages to Read</NavLink>
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl text-[28px] font-bold workSans">Book Vibe</a>
+        <NavLink to="/" className="btn btn-ghost text-xl text-[28px] font-bold workSans">Book Vibe</NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a className="px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg">Home</a>
+            <NavLink to="/"  className={location.pathname === '/'?"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg border border-solid border-[rgb(35,190,10)] rounded-lg text-[rgb(35,190,10)] font-semibold":"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg"}>Home</NavLink>
           </li>
           <li>
-            <a className="px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg">Listed Books</a>
+            <NavLink to="/listed-books" className={location.pathname === '/listed-books'?"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg border border-solid border-[rgb(35,190,10)] rounded-lg text-[rgb(35,190,10)] font-semibold":"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg"}>Listed Books</NavLink>
           </li>
           <li>
-            <a className="px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg">Pages to Read</a>
+            <NavLink to="/pages-to-read" className={location.pathname === '/pages-to-read'?"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg border border-solid border-[rgb(35,190,10)] rounded-lg text-[rgb(35,190,10)] font-semibold":"px-[17px] py-[14px] text-[rgba(19,19,19,0.8)] text-lg"}>Pages to Read</NavLink>
           </li>
         </ul>
       </div>

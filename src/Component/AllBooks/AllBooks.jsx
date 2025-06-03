@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { booksContext } from "../Banner/Banner";
+import { useNavigate } from "react-router-dom";
 const AllBooks = () => {
   const [books] = useContext(booksContext);
+  const naveToDetails = useNavigate();
   return (
     <div className="grid grid-cols-3 gap-6">
       {books.map((book) => (
-        <div key={book.bookId} className="border border-solid border-[rgba(19,19, 19,0.15)] rounded-2xl">
+        <div key={book.bookId} onClick={()=>{
+            naveToDetails(`/${book.bookName.toLowerCase().replace(/\s+/g,"-")}`);
+        }} className="border border-solid border-[rgba(19,19, 19,0.15)] rounded-2xl cursor-pointer">
           <div className="p-6 flex flex-col">
             <div className="bg-[rgb(243,243,243)] h-[230px] rounded-2xl flex justify-center items-center">
               <img
